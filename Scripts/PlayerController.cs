@@ -15,9 +15,9 @@ public class PlayerController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		print ("funke d?");
 		transform.position = spawnpoint.position;
 		body2D = GetComponent<Rigidbody2D> ();
-        
 	}
 
 	// Update is called once per frame
