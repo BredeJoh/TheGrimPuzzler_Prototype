@@ -10,7 +10,7 @@ public class ActivateableDoor : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D (Collider2D other){
-		if (other.gameObject.tag == "Player"){
+		if (other.gameObject.tag == "brute"){
 			Destroy (door);
 			gameObject.GetComponent<BoxCollider2D> ().enabled = !gameObject.GetComponent<BoxCollider2D> ().enabled;
 		}
