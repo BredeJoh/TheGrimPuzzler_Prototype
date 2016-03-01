@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour {
 	void Start () {
 		transform.position = spawnpoint.position;
 		body2D = GetComponent<Rigidbody2D> ();
+        print("hei");
 	}
 
 	// Update is called once per frame
