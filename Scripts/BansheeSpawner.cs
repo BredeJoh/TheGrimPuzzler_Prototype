@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SkeleSpawner : MonoBehaviour {
+public class BansheeSpawner : MonoBehaviour {
 
-	public Transform skeletonPrefab;
-	public Transform skeletonSpawner;
-	public Transform currentSkeleton;
+	public Transform bansheePrefab;
+	public Transform bansheeSpawner;
+	public Transform currentBanshee;
 
 	float nextTimeToSearch = 0;
 	public bool limit;
@@ -17,19 +17,19 @@ public class SkeleSpawner : MonoBehaviour {
 
 	void FixedUpdate(){
 
-		if (currentSkeleton == null) {
+		if (currentBanshee == null) {
 			limit = true;
 
 			if (nextTimeToSearch <= Time.time) {
-				GameObject searchResult = GameObject.FindGameObjectWithTag ("skeleton");	
+				GameObject searchResult = GameObject.FindGameObjectWithTag ("banshee");	
 				if (searchResult != null){
-					currentSkeleton = searchResult.transform;
-				limit = false;
-				nextTimeToSearch = Time.time + 0.5f;
-				}
+					currentBanshee = searchResult.transform;
+					limit = false;
+					nextTimeToSearch = Time.time + 0.5f;
 				}
 			}
 		}
+	}
 
 	void OnTriggerEnter2D(Collider2D other){
 		gameObject.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0f,0f);
@@ -43,7 +43,7 @@ public class SkeleSpawner : MonoBehaviour {
 
 			if(Input.GetKeyDown(KeyCode.DownArrow) && limit == true){
 
-				Instantiate(skeletonPrefab, skeletonSpawner.position, skeletonSpawner.rotation);
+				Instantiate(bansheePrefab, bansheeSpawner.position, bansheeSpawner.rotation);
 				limit = false;
 
 			}

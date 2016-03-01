@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SkeletonController : MonoBehaviour {
+public class BansheeController : MonoBehaviour {
 
 	float speed = 7.0f; 
-	float jumpSpeed = 12.0f;
+	float jumpSpeed = 6.0f;
 	bool isGrounded = false;
 	Rigidbody2D body2D;
 
@@ -12,10 +12,10 @@ public class SkeletonController : MonoBehaviour {
 	void Start () {
 		body2D = GetComponent<Rigidbody2D> ();
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-		if (GameMaster.currentPlayerSkeleton == true) {
+		if (GameMaster.currentPlayerBanshee == true) {
 			// Check if Skeleton exists
 
 			// Movement
@@ -28,23 +28,20 @@ public class SkeletonController : MonoBehaviour {
 			} else {
 				body2D.velocity = new Vector2 (0f, body2D.velocity.y);
 			}
-		
+
 			// Jumping
 			if (Input.GetKeyDown (KeyCode.UpArrow) && isGrounded == true) {
 				body2D.velocity = new Vector2 (body2D.velocity.x, jumpSpeed);
 				isGrounded = false;
 			}
 		} else {
-			gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,transform.position.y);
+			//gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2 (0,transform.position.y);
 		}
 	}
 
 	void OnCollisionEnter2D(Collision2D other){
 		if (other.gameObject.tag == "ground"){
 			isGrounded = true;
-		}
-		if (other.gameObject.tag == "spikes") {
-			GameMaster.KillSkeleton(this);
 		}
 	}
 }

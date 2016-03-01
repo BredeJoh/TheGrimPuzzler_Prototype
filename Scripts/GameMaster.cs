@@ -8,6 +8,7 @@ public class GameMaster : MonoBehaviour {
 	public static bool currentPlayer = true;
 	public static bool currentPlayerSkeleton = false;
 	public static bool currentPlayerBrute = false;
+	public static bool currentPlayerBanshee = false;
 
 	int spawnDelay = 2;
 
@@ -26,22 +27,39 @@ public class GameMaster : MonoBehaviour {
 			currentPlayerSkeleton = true;
 			currentPlayer = false;
 			currentPlayerBrute = false;
+			currentPlayerBanshee = false;
 		} else if (Input.GetKeyDown (KeyCode.Q) && currentPlayerSkeleton) {
 			// Focus on Player
 			currentPlayerSkeleton = false;
 			currentPlayerBrute = false;
 			currentPlayer = true;
+			currentPlayerBanshee = false;
 		}
 		if (Input.GetKeyDown (KeyCode.W) && !currentPlayerBrute) {
 			// Focus on Brute
 			currentPlayerSkeleton = false;
 			currentPlayerBrute = true;
 			currentPlayer = false;
+			currentPlayerBanshee = false;
 		} else if (Input.GetKeyDown (KeyCode.W) && currentPlayerBrute) {
 			// Fucus on Player
 			currentPlayerSkeleton = false;
 			currentPlayerBrute = false;
 			currentPlayer = true;
+			currentPlayerBanshee = false;
+		}
+		if (Input.GetKeyDown (KeyCode.E) && !currentPlayerBanshee) {
+			// Focus on Brute
+			currentPlayerSkeleton = false;
+			currentPlayerBrute = false;
+			currentPlayer = false;
+			currentPlayerBanshee = true;
+		} else if (Input.GetKeyDown (KeyCode.E) && currentPlayerBanshee) {
+			// Fucus on Player
+			currentPlayerSkeleton = false;
+			currentPlayerBrute = false;
+			currentPlayer = true;
+			currentPlayerBanshee = false;
 		}
 	}
 

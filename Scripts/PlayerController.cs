@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour {
 	void Start () {
 		transform.position = spawnpoint.position;
 		body2D = GetComponent<Rigidbody2D> ();
-        
 	}
 
 	// Update is called once per frame
@@ -90,21 +89,25 @@ public class PlayerController : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D other){
 		if (other.gameObject.tag == "ground")
         {
+		if (other.gameObject.tag == "ground") {
 			isGrounded = true;
 		}     
        /* if (other.gameObject.tag == "skeleton")
+		}  
+	}
+
+	void OnCollisionStay2D (Collision2D other){
+        if (other.gameObject.tag == "skeleton")
         {
             stunned = true;
             Vector2 knockBack = other.gameObject.transform.position - gameObject.transform.position;
             if (knockBack.x > 0)
             {
                 body2D.velocity = new Vector2(-speed, speed);
-                print("hei");
             }
             else
             {
                 body2D.velocity = new Vector2(speed, speed);
-                print("hade");          
             }
         }
         if(other.gameObject.tag == "brute")
@@ -114,14 +117,25 @@ public class PlayerController : MonoBehaviour {
             if (knockBack.x > 0)
             {
                 body2D.velocity = new Vector2(-speed, speed);
-                print("hei");
             }
             else
             {
                 body2D.velocity = new Vector2(speed, speed);
-                print("hade");
             }
-        }*/
+        }
+		if(other.gameObject.tag == "banshee")
+		{
+			stunned = true;
+			Vector2 knockBack = other.gameObject.transform.position - gameObject.transform.position;
+			if (knockBack.x > 0)
+			{
+				body2D.velocity = new Vector2(-speed, speed);
+			}
+			else
+			{
+				body2D.velocity = new Vector2(speed, speed);
+			}
+		}
     }
 
     void OnCollisionExit2D(Collision2D other)

@@ -10,6 +10,7 @@ public class CameraFollow2D : MonoBehaviour {
 	public static Transform player;
 	public static Transform skeleton;
 	public static Transform brute;
+	public static Transform banshee;
 	float nextTimeToSearch = 0;
 
 	void Start (){
@@ -27,23 +28,38 @@ public class CameraFollow2D : MonoBehaviour {
 		}
 		if(GameMaster.currentPlayerSkeleton){
 
-			if(skeleton==null){
-				FindSkeleton();
+			FindSkeleton();
+			if (skeleton == null){
+				GameMaster.currentPlayer = true;
+				GameMaster.currentPlayerSkeleton = false;
+			}
+				
 				if (skeleton != null){
 					target = skeleton;
 				}
-			}
-
 		}
 		if(GameMaster.currentPlayerBrute){
 
+			FindBrute();
 			if(brute==null){
-				FindBrute();
-				if (brute != null){
-				target = brute;
+				GameMaster.currentPlayer = true;
+				GameMaster.currentPlayerBrute = false;
+
 				}
+				if (brute != null){
+					target = brute;
+				}
+		}
+		if(GameMaster.currentPlayerBanshee){
+
+			FindBanshee();
+			if(banshee==null){
+				GameMaster.currentPlayer = true;
+				GameMaster.currentPlayerBanshee = false;
 			}
-			target = brute;
+				if (banshee != null){
+					target = banshee;
+				}
 		}
 
 		// Searching for player until he spawnes
@@ -91,6 +107,15 @@ public class CameraFollow2D : MonoBehaviour {
 			GameObject searchResult = GameObject.FindGameObjectWithTag ("brute");	
 			if (searchResult != null)
 				brute = searchResult.transform;
+			nextTimeToSearch = Time.time + 0.5f;
+		}
+	}
+
+	void FindBanshee (){
+		if (nextTimeToSearch <= Time.time) {
+			GameObject searchResult = GameObject.FindGameObjectWithTag ("banshee");	
+			if (searchResult != null)
+				banshee = searchResult.transform;
 			nextTimeToSearch = Time.time + 0.5f;
 		}
 	}
