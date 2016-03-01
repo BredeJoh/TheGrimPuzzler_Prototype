@@ -8,7 +8,7 @@ public class Player : MonoBehaviour {
     Rigidbody2D body2D;
 	[System.Serializable]
 	public class PlayerStats{
-		public int PlayerHealth = 100;
+		public int PlayerHealth = 3;
 	}
 
 	public PlayerStats playerStats = new PlayerStats ();
@@ -46,6 +46,10 @@ public class Player : MonoBehaviour {
         {
             DamagePlayer(1);
         }
+		if (other.gameObject.tag == "banshee")
+		{
+			DamagePlayer(1);
+		}
     }
 
 	IEnumerator OnTriggerEnter2D (Collider2D other){
