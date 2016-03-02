@@ -11,7 +11,7 @@ public class HeavyCrate : MonoBehaviour {
 		gameObject.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
 		}  
 		while (isMoving){
-		gameObject.GetComponent<Rigidbody2D> ().velocity = new Vector2 (brute.position.x, brute.position.y);
+
 		}
 	}
 
@@ -27,7 +27,5 @@ public class HeavyCrate : MonoBehaviour {
 		}
 	}
 
-	/*void ParentThatShit(GameObject newParent){
-		gameObject.transform.parent = newParent.transform;
-	}*/
+
 }
