@@ -25,6 +25,7 @@ public class LeverInteraction : MonoBehaviour {
             bridge.GetComponent<HingeJoint2D>().useLimits = false;
             
             active = true;
+            bridge.tag = "ground";
         }
     }
 }
