@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class BansheeSpawner : MonoBehaviour {
 
@@ -7,11 +8,15 @@ public class BansheeSpawner : MonoBehaviour {
 	public Transform bansheeSpawner;
 	public Transform currentBanshee;
 
+	Text banshee;
+
 	float nextTimeToSearch = 0;
 	public bool limit;
 
 	// Use this for initialization
 	void Start () {
+		banshee = GameObject.Find ("ActiveBanshee").GetComponent<Text> ();
+
 		limit = true;
 	}
 
@@ -44,6 +49,7 @@ public class BansheeSpawner : MonoBehaviour {
 			if(Input.GetKeyDown(KeyCode.DownArrow) && limit == true){
 
 				Instantiate(bansheePrefab, bansheeSpawner.position, bansheeSpawner.rotation);
+				banshee.enabled = enabled;
 				limit = false;
 
 			}

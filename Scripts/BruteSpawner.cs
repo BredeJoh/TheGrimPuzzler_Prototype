@@ -1,17 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class BruteSpawner : MonoBehaviour {
 
 	public Transform brutePrefab;
 	public Transform bruteSpawner;
 	public Transform currentBrute;
+
+	Text brute;
 	
 	float nextTimeToSearch = 0;
 	public bool limit;
 	
 	// Use this for initialization
 	void Start () {
+		brute = GameObject.Find ("ActiveBrute").GetComponent<Text> ();
+
 		limit = true;
 	}
 	
@@ -44,6 +49,7 @@ public class BruteSpawner : MonoBehaviour {
 			if(Input.GetKeyDown(KeyCode.DownArrow) && limit == true){
 				
 				Instantiate(brutePrefab, bruteSpawner.position, bruteSpawner.rotation);
+				brute.enabled = enabled;
 				limit = false;
 				
 			}
