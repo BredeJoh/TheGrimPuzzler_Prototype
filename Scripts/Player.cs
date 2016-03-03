@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour {
 
     Text healthText;
+    bool invunrable = false;
     Rigidbody2D body2D;
 	[System.Serializable]
 	public class PlayerStats{
@@ -27,11 +28,21 @@ public class Player : MonoBehaviour {
     }
 
 	public void DamagePlayer(int damage){
-		playerStats.PlayerHealth -= damage;
+        if (invunrable == false)
+        {
+            playerStats.PlayerHealth -= damage;
+            invunrable = true;
+            StartCoroutine(invunrableState());
+        }
 		if (playerStats.PlayerHealth <= 0) {
 			GameMaster.KillPlayer(this);
 		}
 	}
+    IEnumerator invunrableState()
+    {
+        yield return new WaitForSeconds(1);
+        invunrable = false;
+    }
 	void OnCollisionEnter2D (Collision2D other){
 		
 		if(other.gameObject.tag == "spikes")
