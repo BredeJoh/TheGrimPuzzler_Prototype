@@ -3,7 +3,7 @@ using System.Collections;
 
 public class MainMenu : MonoBehaviour {
 
-	void OnGUI(){
+	void Update (){
 		if (Input.GetKeyDown(KeyCode.Return)){
 			print ("-----Started Game-----");
 			StartCoroutine(LoadNextLevel ());

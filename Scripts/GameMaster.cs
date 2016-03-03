@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class GameMaster : MonoBehaviour {
 
@@ -10,6 +11,9 @@ public class GameMaster : MonoBehaviour {
 	public static bool currentPlayerBrute = false;
 	public static bool currentPlayerBanshee = false;
 
+	public static int collectables;
+	Text collect;
+
 	int spawnDelay = 2;
 
 	public Transform playerPrefab;
@@ -18,8 +22,13 @@ public class GameMaster : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		gm = GameObject.FindGameObjectWithTag ("GM").GetComponent<GameMaster>();
+		collect = GameObject.Find ("CurrentCollectables").GetComponent<Text> ();
 	}
-	
+
+	void FixedUpdate(){
+		collect.text = ("Collected:" + collectables);
+	}
+
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown (KeyCode.Q) && !currentPlayerSkeleton) {
@@ -83,6 +92,6 @@ public class GameMaster : MonoBehaviour {
 		Destroy (brute.gameObject);
 		GameMaster.currentPlayer = true;
 		GameMaster.currentPlayerBrute = false;
-	}
+	} 
 }
 
