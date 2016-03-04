@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour {
 
 	float speed = 7.0f; 
 	float jumpSpeed = 14.0f;
-	public bool isGrounded = false;
+	bool isGrounded = false;
     bool stunned = false;
     private bool climb = false;
 	Rigidbody2D body2D;

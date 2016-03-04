@@ -4,7 +4,7 @@ using System.Collections;
 public class enemyMovement : MonoBehaviour {
 
     Rigidbody2D body2D;
-    float speed = 7.0f;
+    float speed = 3f;
     private bool moveRight = true;
 
 	public GameObject bruteSpawn;
