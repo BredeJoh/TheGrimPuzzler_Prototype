@@ -49,15 +49,15 @@ public class Player : MonoBehaviour {
         {			
 			DamagePlayer (3);		
 		}
-        if (other.gameObject.tag == "skeleton")
+        if (other.gameObject.name == "EnemySkeleton")
         {
             DamagePlayer(1);
         }
-        if (other.gameObject.tag == "brute")
+        if (other.gameObject.name == "EnemyBrute")
         {
             DamagePlayer(1);
         }
-		if (other.gameObject.tag == "banshee")
+		if (other.gameObject.name == "EnemyBanshee")
 		{
 			DamagePlayer(1);
 		}

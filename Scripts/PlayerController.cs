@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void OnCollisionStay2D (Collision2D other){
-        if (other.gameObject.tag == "skeleton")
+        if (other.gameObject.name == "EnemySkeleton")
         {
             stunned = true;
             Vector2 knockBack = other.gameObject.transform.position - gameObject.transform.position;
@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour {
                 body2D.velocity = new Vector2(speed, speed);
             }
         }
-        if(other.gameObject.tag == "brute")
+        if(other.gameObject.name == "EnemyBrute")
         {
             stunned = true;
             Vector2 knockBack = other.gameObject.transform.position - gameObject.transform.position;
@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour {
                 body2D.velocity = new Vector2(speed, speed);
             }
         }
-		if(other.gameObject.tag == "banshee")
+		if(other.gameObject.name == "EnemyBanshee")
 		{
 			stunned = true;
 			Vector2 knockBack = other.gameObject.transform.position - gameObject.transform.position;
