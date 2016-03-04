@@ -54,9 +54,9 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D other){
-		if (other.gameObject.tag == "ground") {
+		/*if (other.gameObject.tag == "ground") {
 			isGrounded = true;
-		}  
+		}*/  
 	}
 
 	void OnCollisionStay2D (Collision2D other){
@@ -103,19 +103,19 @@ public class PlayerController : MonoBehaviour {
 
     void OnCollisionExit2D(Collision2D other)
     {
-        if (other.gameObject.tag == "ground")
+        /*if (other.gameObject.tag == "ground")
         {
             isGrounded = false;
-        }
+        }*/
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-		/*if (other.gameObject.tag == "ground")
+		if (other.gameObject.tag == "ground")
 		{
 			isGrounded = true;
 		}   
-*/
+
         if (other.gameObject.tag == "ladder")
         {
             climb = true;
@@ -128,6 +128,9 @@ public class PlayerController : MonoBehaviour {
         {
             climb = false;
         }
+		if (other.gameObject.tag == "ground"){
+			isGrounded = false;
+		}
     }
 
 }
