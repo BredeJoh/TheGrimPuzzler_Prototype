@@ -7,6 +7,10 @@ public class enemyMovement : MonoBehaviour {
     float speed = 7.0f;
     private bool moveRight = true;
 
+	public GameObject bruteSpawn;
+	public GameObject skeleSpawn;
+	public GameObject banshSpawn;
+
 	// Use this for initialization
 	void Start () {
         body2D = GetComponent<Rigidbody2D>();
@@ -39,4 +43,20 @@ public class enemyMovement : MonoBehaviour {
             }
         }
     }
+
+	void OnCollisionEnter2D (Collision2D other){
+		if (other.gameObject.tag == "crate"){
+
+		if (gameObject.tag == "enemyBrute"){
+			Instantiate(bruteSpawn, transform.position, transform.rotation);
+			Destroy (this.gameObject);
+		} else if (gameObject.tag == "enemySkele"){
+			Instantiate(skeleSpawn, transform.position, transform.rotation);
+			Destroy (this.gameObject);
+		} else if (gameObject.tag == "enemyBanshee"){
+			Instantiate (banshSpawn, transform.position, transform.rotation);
+			Destroy (this.gameObject);
+		}
+	}
+}
 }

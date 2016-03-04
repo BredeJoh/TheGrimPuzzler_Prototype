@@ -3,8 +3,7 @@ using System.Collections;
 
 public class FallingObjects : MonoBehaviour {
 
-	public GameObject bruteSpawn;
-	public GameObject skeleSpawn;
+
 
 	// Use this for initialization
 	void Start () {
@@ -18,14 +17,6 @@ public class FallingObjects : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D other){
 		
-		if (other.gameObject.tag == "brute"){
-			Destroy (other.gameObject);
-			Instantiate(bruteSpawn, transform.position, transform.rotation);
-		}
-		if (other.gameObject.tag == "skeleton"){
-			Destroy (other.gameObject);
-			Instantiate(skeleSpawn, transform.position, transform.rotation);
-		}
 			Destroy (this.gameObject);
 
 	}

@@ -37,8 +37,10 @@ public class BruteSpawner : MonoBehaviour {
 	}
 	
 	void OnTriggerEnter2D(Collider2D other){
-		gameObject.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0f,0f);
-		gameObject.GetComponent<Rigidbody2D> ().gravityScale = 0f;
+		if (other.gameObject.tag == "ground") {
+			gameObject.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0f, 0f);
+			gameObject.GetComponent<Rigidbody2D> ().gravityScale = 0f;
+		}
 	}
 	
 	void OnTriggerStay2D(Collider2D other){
