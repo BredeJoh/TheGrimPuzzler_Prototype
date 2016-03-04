@@ -11,13 +11,14 @@ public class ActivateCrate : MonoBehaviour {
 	void Start () {
 		//crate = GameObject.FindGameObjectWithTag ("crate");
 		crateSpawn = GameObject.Find ("CrateSpawn").transform;
-		currentCrate = GameObject.Find ("Crate");
 		Instantiate (crate, crateSpawn.position, crateSpawn.rotation);
+		currentCrate = GameObject.Find ("Crate");
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (currentCrate == null) {
+			Instantiate (crate, crateSpawn.position, crateSpawn.rotation);
 			currentCrate = GameObject.FindGameObjectWithTag ("crate");
 		}
 	}
@@ -26,16 +27,16 @@ public class ActivateCrate : MonoBehaviour {
 
 		if (other.gameObject.tag == "Player" && Input.GetKeyDown(KeyCode.DownArrow)){
 			currentCrate.GetComponent<Rigidbody2D> ().gravityScale = 1;
-			gameObject.GetComponent<BoxCollider2D>().enabled = !gameObject.GetComponent<BoxCollider2D>().enabled;
+			//gameObject.GetComponent<BoxCollider2D>().enabled = !gameObject.GetComponent<BoxCollider2D>().enabled;
 
-			StartCoroutine (RespawnCrate());
+			//StartCoroutine (RespawnCrate());
 		}
 	}
 
-	IEnumerator RespawnCrate (){
+	/*IEnumerator RespawnCrate (){
 
 		yield return new WaitForSeconds (4);
 		Instantiate (crate, crateSpawn.position, crateSpawn.rotation);
 		gameObject.GetComponent<BoxCollider2D> ().enabled = enabled;
-	}
+	}*/
 }
