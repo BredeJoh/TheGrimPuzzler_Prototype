@@ -30,6 +30,8 @@ public class ActivateCrate : MonoBehaviour {
 			//gameObject.GetComponent<BoxCollider2D>().enabled = !gameObject.GetComponent<BoxCollider2D>().enabled;
 
 			//StartCoroutine (RespawnCrate());
+		} else if (other.gameObject.tag == "banshee" && Input.GetKeyDown(KeyCode.DownArrow)){
+			
 		}
 	}
 
