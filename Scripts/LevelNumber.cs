@@ -16,7 +16,7 @@ public class LevelNumber : MonoBehaviour {
 		level1 = true;
 
 		if (level1){
-			levelText.text = "Floor 1";
+			levelText.text = "Floor Number";
 		}
 	}
 	
