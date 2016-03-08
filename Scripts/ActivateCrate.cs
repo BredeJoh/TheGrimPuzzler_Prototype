@@ -5,40 +5,51 @@ public class ActivateCrate : MonoBehaviour {
 
 	public GameObject crate;
 	Transform crateSpawn;
-	public GameObject currentCrate;
+	GameObject currentCrate;
+
+	bool respawn = true;
 
 	// Use this for initialization
 	void Start () {
-		//crate = GameObject.FindGameObjectWithTag ("crate");
 		crateSpawn = GameObject.Find ("CrateSpawn").transform;
 		Instantiate (crate, crateSpawn.position, crateSpawn.rotation);
-		currentCrate = GameObject.Find ("Crate");
+		currentCrate = GameObject.FindGameObjectWithTag ("crate");
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+		// Respawns Crate if it is not found
 		if (currentCrate == null) {
-			Instantiate (crate, crateSpawn.position, crateSpawn.rotation);
-			currentCrate = GameObject.FindGameObjectWithTag ("crate");
+			if (respawn){
+			StartCoroutine (RespawnCrate(2));
+
+			}
+			respawn = false;
 		}
 	}
 
 	void OnTriggerStay2D(Collider2D other){
 
 		if (other.gameObject.tag == "Player" && Input.GetKeyDown(KeyCode.DownArrow)){
-			currentCrate.GetComponent<Rigidbody2D> ().gravityScale = 1;
-			//gameObject.GetComponent<BoxCollider2D>().enabled = !gameObject.GetComponent<BoxCollider2D>().enabled;
 
-			//StartCoroutine (RespawnCrate());
-		} else if (other.gameObject.tag == "banshee" && Input.GetKeyDown(KeyCode.DownArrow)){
-			
+			currentCrate.GetComponent<Rigidbody2D> ().gravityScale = 1;
+
+			gameObject.GetComponent<BoxCollider2D>().enabled = !enabled;
+
 		}
 	}
 
-	/*IEnumerator RespawnCrate (){
+	// Respawning crate
+	IEnumerator RespawnCrate (float waitIn){
 
-		yield return new WaitForSeconds (4);
+		Debug.Log ("---Respawning Crate---");
+		yield return new WaitForSeconds (waitIn);
+		Debug.Log ("---Waited for "+waitIn+" seconds");
+
 		Instantiate (crate, crateSpawn.position, crateSpawn.rotation);
+		currentCrate = GameObject.FindGameObjectWithTag ("crate");
+		respawn = true;
 		gameObject.GetComponent<BoxCollider2D> ().enabled = enabled;
-	}*/
+	}
 }
