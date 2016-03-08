@@ -11,8 +11,12 @@ public class ActivateableDoor : MonoBehaviour {
 
 	void OnTriggerEnter2D (Collider2D other){
 		if (other.gameObject.tag == "brute"){
-			Destroy (door);
-			gameObject.GetComponent<BoxCollider2D> ().enabled = !gameObject.GetComponent<BoxCollider2D> ().enabled;
+			//Destroy (door);
+			door.GetComponent<SpriteRenderer>().enabled = !enabled;
+			door.GetComponent<BoxCollider2D>().enabled = !enabled;
+			//gameObject.GetComponent<BoxCollider2D> ().enabled = !gameObject.GetComponent<BoxCollider2D> ().enabled;
 		}
 	}
+
+
 }

@@ -33,7 +33,7 @@ public class ActivateCrate : MonoBehaviour {
 
 		if (other.gameObject.tag == "Player" && Input.GetKeyDown(KeyCode.DownArrow)){
 
-			currentCrate.GetComponent<Rigidbody2D> ().gravityScale = 1;
+			currentCrate.GetComponent<Rigidbody2D> ().gravityScale = 2;
 
 			gameObject.GetComponent<BoxCollider2D>().enabled = !enabled;
 
