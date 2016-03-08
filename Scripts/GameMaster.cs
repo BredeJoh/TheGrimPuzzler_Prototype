@@ -14,7 +14,7 @@ public class GameMaster : MonoBehaviour {
 	public static int collectables;
 	Text collect;
 
-	int spawnDelay = 2;
+	int spawnDelay = 1;
 
 	public Transform playerPrefab;
 	public Transform spawnPoint;

@@ -20,8 +20,6 @@ public class CameraFollow2D : MonoBehaviour {
 // Update is called once per frame
 	void FixedUpdate () {
 
-
-
 		// Switching targets acording to the active player
 		if(GameMaster.currentPlayer){
 			target = player;
