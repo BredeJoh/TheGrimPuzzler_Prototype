@@ -14,6 +14,7 @@ public class ActivateCrate : MonoBehaviour {
 		crateSpawn = GameObject.Find ("CrateSpawn").transform;
 		Instantiate (crate, crateSpawn.position, crateSpawn.rotation);
 		currentCrate = GameObject.FindGameObjectWithTag ("crate");
+		currentCrate.GetComponent<Rigidbody2D> ().gravityScale = 0;
 	}
 	
 	// Update is called once per frame
@@ -31,7 +32,7 @@ public class ActivateCrate : MonoBehaviour {
 
 	void OnTriggerStay2D(Collider2D other){
 
-		if (other.gameObject.tag == "Player" && Input.GetKeyDown(KeyCode.DownArrow)){
+		if ((other.gameObject.tag == "Player" || other.gameObject.tag == "banshee") && Input.GetKeyDown(KeyCode.DownArrow)){
 
 			currentCrate.GetComponent<Rigidbody2D> ().gravityScale = 2;
 
@@ -49,6 +50,7 @@ public class ActivateCrate : MonoBehaviour {
 
 		Instantiate (crate, crateSpawn.position, crateSpawn.rotation);
 		currentCrate = GameObject.FindGameObjectWithTag ("crate");
+		currentCrate.GetComponent<Rigidbody2D> ().gravityScale = 0;
 		respawn = true;
 		gameObject.GetComponent<BoxCollider2D> ().enabled = enabled;
 	}

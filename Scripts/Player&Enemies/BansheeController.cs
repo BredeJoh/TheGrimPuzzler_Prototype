@@ -40,7 +40,7 @@ public class BansheeController : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D other){
-		if (other.gameObject.tag == "ground"){
+		if (other.gameObject.tag == "ground" || other.gameObject.tag == "spikes"){
 			isGrounded = true;
 		}
 	}

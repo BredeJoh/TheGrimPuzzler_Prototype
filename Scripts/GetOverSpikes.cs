@@ -8,7 +8,7 @@ public class GetOverSpikes : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		Instantiate (ground, groundSpawn.position, groundSpawn.rotation);
 	}
 	
 	// Update is called once per frame
@@ -18,7 +18,8 @@ public class GetOverSpikes : MonoBehaviour {
 
 	void OnTriggerStay2D (Collider2D other){
 		if (other.gameObject.tag == "banshee" && Input.GetKeyDown(KeyCode.DownArrow)){
-			Instantiate (ground, groundSpawn.position, groundSpawn.rotation);
+			GameObject.FindGameObjectWithTag ("spikeBridge").GetComponent<Rigidbody2D> ().gravityScale = 1;
+			GameObject.FindGameObjectWithTag ("spikeBridge").tag = "ground";
 			gameObject.GetComponent<BoxCollider2D> ().enabled = !gameObject.GetComponent<BoxCollider2D> ().enabled;
 		}
 	}
